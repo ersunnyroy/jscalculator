@@ -13,39 +13,84 @@
     button
     {
         padding:10px;
-        width:30px;
+        width:100%;
+    }
+    table{
+        margin-top:10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
     }
     td
     {
-        margin:3px;
+        width:40px;
+    }
+    input{
+        border:1px solid #eee;
+        height:30px;
+    }
+    .division
+    {
+        display:block;
+        text-align:center;
+        margin-top:2em;
+        align-items: center;
     }
 </style>
+<script>
+    let performCalculation = function(value){
+        console.log(value);
+    }
+
+    // code to add event listener to all the buttons
+    var buttons = document.querySelectorAll(".buttonClick");
+
+    buttons.forEach(function(elem){
+        
+        elem.addEventListener('click', function(){
+            performCalculation(elem.target.value);
+        });
+    });
+</script>
 </head>
 <body>
 
 <h1>Calculator using simple/core javascript</h1>
-<div>
-    <input type="text" id="display" />
+<div class="division">
+    <div>
+        <input type="text" id="display" />
+    </div>
+    <div>
     <table>
+        <tr>
+            <td><button class="buttonClick" value="clear">AC</button></td>
+            <td><button class="buttonClick" value="0">0</button></td>
+            <td><button class="buttonClick" value="/">/</button></td>
+            <td><button class="buttonClick" value="+">+</button></td>
+
+        </tr>
         <tr>
             <td><button class="buttonClick" value="7">7</button></td>
             <td><button class="buttonClick" value="8">8</button></td>
             <td><button class="buttonClick" value="9">9</button></td>
-            <td><button class="buttonClick" value="0">0</button></td>
+            <td><button class="buttonClick" value="-">-</button></td>
         </tr>
         <tr>
             <td><button class="buttonClick" value="4">4</button></td>
             <td><button class="buttonClick" value="5">5</button></td>
             <td><button class="buttonClick" value="6">6</button></td>
-            <td><button class="buttonClick" value="-">-</button></td>
+            <td><button class="buttonClick" value="*">*</button></td>
+
         </tr>
         <tr>
             <td><button class="buttonClick" value="1">1</button></td>
             <td><button class="buttonClick" value="2">2</button></td>
             <td><button class="buttonClick" value="3">3</button></td>
-            <td><button class="buttonClick" value="+">+</button></td>
+            <td><button class="buttonClick" value="calculate">=</button></td>
         </tr>
+       
     </table>
+</div>
 </div>
 </body>
 </html>
