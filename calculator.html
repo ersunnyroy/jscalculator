@@ -37,21 +37,7 @@
         align-items: center;
     }
 </style>
-<script>
-    let performCalculation = function(value){
-        console.log(value);
-    }
 
-    // code to add event listener to all the buttons
-    var buttons = document.querySelectorAll(".buttonClick");
-
-    buttons.forEach(function(elem){
-        
-        elem.addEventListener('click', function(){
-            performCalculation(elem.target.value);
-        });
-    });
-</script>
 </head>
 <body>
 
@@ -92,5 +78,49 @@
     </table>
 </div>
 </div>
+<script>
+
+    // code to perform calculation of the calculator
+    const performCalculation = function(elem){
+        let value           = elem.getAttribute('value');
+        let displayScreen   = document.getElementById('display').value;
+        let updatedDisplay  = '';
+
+        if (value == 'clear')
+        {
+            updatedDisplay = '';
+        }
+        else if(value == 'calculate')
+        {
+            try {
+                updatedDisplay = eval(displayScreen);
+            } catch (e) {
+                if (e instanceof SyntaxError) {
+                    alert(e.message);
+                }
+            }
+        }
+        else
+        {
+            updatedDisplay = displayScreen + value;
+        }
+
+        if (updatedDisplay == undefined)
+        {
+            updatedDisplay = '';
+        }
+
+        document.getElementById('display').value = updatedDisplay;
+    }
+
+    // code to add event listener to all the buttons
+    var buttons = document.querySelectorAll(".buttonClick");
+
+    buttons.forEach(function(elem){
+        elem.addEventListener('click', function(){
+            performCalculation(elem);
+        });
+    });
+</script>
 </body>
 </html>
